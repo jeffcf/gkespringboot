@@ -19,6 +19,8 @@ package com.jeffcffcp.springboot.hello.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +45,17 @@ public class GcpSqlController {
 		return this.jdbcTemplate.queryForList("SELECT * FROM users").stream()
 				.map((m) -> m.values().toString())
 				.collect(Collectors.toList());
+	}
+	
+	
+	@EventListener(ApplicationReadyEvent.class)
+	public void doSomethingAfterStartup() {
+	    System.out.println("hello world, I have just started up");
+	    
+	    jdbcTemplate.queryForList("SELECT * FROM users").stream()
+		.map((m) -> m.values().toString())
+		.collect(Collectors.toList());
+	    
+	    
 	}
 }
