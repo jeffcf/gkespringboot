@@ -9,10 +9,12 @@ public class GkespringbootApplication {
 
 	
 	public static void main(String[] args) {
-
+		logger.info("--------------------------------GkespringbootApplication start");
+		
 		SpringApplication.run(GkespringbootApplication.class, args);
 		
-
+		logger.info("--------------------------------GkespringbootApplication end");
+		
 	}
 
 
