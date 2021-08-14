@@ -3,6 +3,11 @@ package com.jeffcffcp.springboot.hello;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 
+ * @author jeff
+ *
+ */
 @SpringBootApplication
 public class GkespringbootApplication {
 
