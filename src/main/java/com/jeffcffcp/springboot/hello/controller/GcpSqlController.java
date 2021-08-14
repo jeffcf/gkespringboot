@@ -19,11 +19,15 @@ package com.jeffcffcp.springboot.hello.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jeffcffcp.springboot.hello.GkespringbootApplication;
 
 /**
  * Web app controller class for sample application. Contains a function that runs a query and displays the results.
@@ -34,6 +38,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GcpSqlController {
 
+	private static final Logger logger = LoggerFactory.getLogger(GcpSqlController.class);
+	
 	private final JdbcTemplate jdbcTemplate;
 
 	public GcpSqlController(JdbcTemplate jdbcTemplate) {
@@ -50,7 +56,8 @@ public class GcpSqlController {
 	
 	@EventListener(ApplicationReadyEvent.class)
 	public void doSomethingAfterStartup() {
-	    System.out.println("hello world, I have just started up");
+		
+		logger.info("hello world, I have just started up");
 	    
 	    jdbcTemplate.queryForList("SELECT * FROM users").stream()
 		.map((m) -> m.values().toString())
