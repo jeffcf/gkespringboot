@@ -40,29 +40,29 @@ public class GcpSqlController {
 
 	private static final Logger logger = LoggerFactory.getLogger(GcpSqlController.class);
 	
-	private final JdbcTemplate jdbcTemplate;
-
-	public GcpSqlController(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
-	@GetMapping("/getSqlData")
-	public List<String> getTuples() {
-		return this.jdbcTemplate.queryForList("SELECT * FROM users").stream()
-				.map((m) -> m.values().toString())
-				.collect(Collectors.toList());
-	}
-	
-	
-	@EventListener(ApplicationReadyEvent.class)
-	public void doSomethingAfterStartup() {
-		
-		logger.info("hello world, I have just started up");
-	    
-	    jdbcTemplate.queryForList("SELECT * FROM users").stream()
-		.map((m) -> m.values().toString())
-		.collect(Collectors.toList());
-	    
-	    
-	}
+//	private final JdbcTemplate jdbcTemplate;
+//
+//	public GcpSqlController(JdbcTemplate jdbcTemplate) {
+//		this.jdbcTemplate = jdbcTemplate;
+//	}
+//
+//	@GetMapping("/getSqlData")
+//	public List<String> getTuples() {
+//		return this.jdbcTemplate.queryForList("SELECT * FROM users").stream()
+//				.map((m) -> m.values().toString())
+//				.collect(Collectors.toList());
+//	}
+//	
+//	
+//	@EventListener(ApplicationReadyEvent.class)
+//	public void doSomethingAfterStartup() {
+//		
+//		logger.info("hello world, I have just started up");
+//	    
+//	    jdbcTemplate.queryForList("SELECT * FROM users").stream()
+//		.map((m) -> m.values().toString())
+//		.collect(Collectors.toList());
+//	    
+//	    
+//	}
 }
