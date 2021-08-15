@@ -15,7 +15,7 @@ public class GkespringbootApplication {
 		
 		SpringApplication.run(GkespringbootApplication.class, args);
 		
-		logger.info("--------------------------------GkespringbootApplication end");
+		logger.info("--------------------------------GkespringbootApplication end 202108151045");
 		
 	}
 
